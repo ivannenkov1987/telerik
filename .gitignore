@@ -1,0 +1,103 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Numerics;
+namespace ConsoleApplication15
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string n = Console.ReadLine();
+            BigInteger product = 1;
+            BigInteger sum = 0;
+            byte transformations = 0;
+            BigInteger temp = BigInteger.Parse(n);
+
+            while (true)
+            {
+
+                while (true)
+                {
+                    if (temp.ToString().Length != 2)
+                    {
+                        temp = temp / 10;
+
+
+                        for (int i = 0; i < temp.ToString().Length; i++)
+                        {
+
+                            if (i % 2 != 0)
+                            {
+                                sum += (BigInteger)(temp.ToString()[i] - '0');
+
+                            }
+                            else
+                            {
+                                continue;
+                            }
+
+
+
+                        }
+                        if (sum == 0)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            product *= sum;
+                            sum = 0;
+
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+
+
+
+                }
+                temp = product;
+                transformations++;
+                product = 1;
+
+                if (transformations > 9)
+                {
+                    Console.WriteLine(temp);
+
+                    break;
+                }
+
+                if (temp > 9)
+                {
+                    continue;
+
+                }
+                else
+                {
+
+                    Console.WriteLine(transformations);
+                    Console.WriteLine(temp);
+                    break;
+
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+        }
+    }
+}
